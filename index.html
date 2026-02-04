@@ -14,20 +14,29 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
     }
     .card {
       background: white;
-      max-width: 700px;
-      padding: 40px 30px;
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      max-width: 720px;
+      padding: 50px 35px;
+      border-radius: 28px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.12);
       text-align: center;
       position: relative;
       z-index: 2;
     }
+    section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease;
+    }
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       color: #e6396d;
       margin-bottom: 10px;
     }
@@ -36,67 +45,63 @@
       margin-bottom: 30px;
     }
     p {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin-bottom: 18px;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      margin-bottom: 22px;
     }
     .heart {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       animation: float 2s ease-in-out infinite;
-      margin: 20px 0;
+      margin: 30px 0;
     }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-10px); }
     }
     .question {
-      margin-top: 35px;
-      font-size: 1.4rem;
+      margin-top: 45px;
+      font-size: 1.5rem;
       color: #e6396d;
       font-weight: 600;
     }
     .buttons {
-      margin-top: 25px;
+      margin-top: 30px;
     }
     button {
       border: none;
-      padding: 14px 28px;
-      font-size: 1rem;
-      border-radius: 30px;
+      padding: 15px 32px;
+      font-size: 1.05rem;
+      border-radius: 40px;
       cursor: pointer;
       margin: 10px;
-      transition: all 0.3s ease;
+      transition: all 0.35s ease;
     }
     .yes {
-      background: #e6396d;
+      background: linear-gradient(135deg, #e6396d, #ff6f91);
       color: white;
     }
     .yes:hover {
-      background: #cf2f60;
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
     .always {
       background: #ffe6ec;
       color: #e6396d;
     }
     .always:hover {
-      background: #ffd1dc;
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
     footer {
-      margin-top: 30px;
-      font-size: 0.9rem;
+      margin-top: 40px;
+      font-size: 0.95rem;
       color: #777;
     }
-
     .confetti {
       position: fixed;
       top: -10px;
-      font-size: 20px;
-      animation: fall 3s linear forwards;
+      font-size: 22px;
+      animation: fall 3.5s linear forwards;
       z-index: 1;
     }
-
     @keyframes fall {
       to {
         transform: translateY(110vh) rotate(360deg);
@@ -109,50 +114,73 @@
 
   <!-- Romantic Background Music -->
   <audio id="bgMusic" autoplay loop>
-    <source src="https://pagalsongz.com/audio/until-i-found-you" type="audio/mpeg">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
 
   <div class="card">
-    <h1>Jay ♥ Gracy</h1>
-    <h2>A little corner of us</h2>
+    <section class="reveal">
+      <h1>Jay ♥ Gracy</h1>
+      <h2>A little corner of us</h2>
+    </section>
 
-    <p>Dear bubsuu,</p>
-    <p>
-      From random conversations to endless laughter, from comfort to chaos,
-      you slowly became my favorite part of every day. With you, even ordinary
-      moments feel warm, safe, and special.
-    </p>
-    <p>
-      You are my calm, my excitement, my soft place to land. Every memory with
-      you is something I want to keep forever.
-    </p>
+    <section class="reveal">
+      <p>Dear Gracy,</p>
+      <p>
+        From random conversations to endless laughter, from comfort to chaos,
+        you slowly became my favorite part of every day. With you, even ordinary
+        moments feel warm, safe, and special.
+      </p>
+    </section>
 
-    <div class="heart">♥</div>
+    <section class="reveal">
+      <p>
+        You are my calm, my excitement, my soft place to land. Every memory with
+        you feels like home — and I want a lifetime of them with you.
+      </p>
+    </section>
 
-    <p class="question">So Mr. Jay Patel … will you be my Valentine?</p>
+    <section class="reveal">
+      <div class="heart">♥</div>
+    </section>
 
-    <div class="buttons">
-      <button class="yes" onclick="celebrate()">YES 💖</button>
-      <button class="always" onclick="alert('I knew it was always you ♥')">Always You 🌹</button>
-    </div>
+    <section class="reveal">
+      <p class="question">So Gracy… will you be my Valentine?</p>
+    </section>
 
-    <footer>
-      love gracuuuu
-    </footer>
+    <section class="reveal">
+      <div class="buttons">
+        <button class="yes" onclick="celebrate()">YES 💖</button>
+        <button class="always" onclick="alert('I knew it was always you ♥')">Always You 🌹</button>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <footer>Made with love by Jay, just for you.</footer>
+    </section>
   </div>
 
   <script>
+    const sections = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    sections.forEach(section => observer.observe(section));
+
     function celebrate() {
       alert('Best YES ever ♥');
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 45; i++) {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
-        confetti.innerText = ['💖','🌹','✨','💘','❤️'][Math.floor(Math.random() * 5)];
+        confetti.innerText = ['💖','🌹','✨','💘','❤️','🥹'][Math.floor(Math.random() * 6)];
         confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.animationDuration = 2 + Math.random() * 2 + 's';
+        confetti.style.animationDuration = 2.5 + Math.random() * 2 + 's';
         document.body.appendChild(confetti);
-
-        setTimeout(() => confetti.remove(), 4000);
+        setTimeout(() => confetti.remove(), 5000);
       }
     }
   </script>
