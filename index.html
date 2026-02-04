@@ -18,60 +18,83 @@
     }
     .card {
       background: white;
-      max-width: 720px;
-      padding: 50px 35px;
-      border-radius: 28px;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+      max-width: 760px;
+      padding: 55px 40px;
+      border-radius: 32px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.14);
       text-align: center;
       position: relative;
       z-index: 2;
     }
     section {
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.9s ease;
+      transform: translateY(45px);
+      transition: all 1s cubic-bezier(.19,1,.22,1);
     }
     section.show {
       opacity: 1;
       transform: translateY(0);
     }
     h1 {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       color: #e6396d;
       margin-bottom: 10px;
     }
+    .glow {
+      animation: glow 2.5s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%,100% { text-shadow: 0 0 8px #ffd1dc; }
+      50% { text-shadow: 0 0 18px #ff6f91; }
+    }
     h2 {
       font-weight: 400;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
     p {
-      font-size: 1.08rem;
-      line-height: 1.8;
-      margin-bottom: 22px;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      margin-bottom: 24px;
     }
     .heart {
-      font-size: 2.8rem;
-      animation: float 2s ease-in-out infinite;
+      font-size: 3rem;
+      margin: 35px 0;
+      animation: heartbeat 1.6s infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+    .timeline {
+      background: #fff5f8;
+      border-radius: 20px;
+      padding: 25px;
       margin: 30px 0;
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    .timeline p {
+      margin: 12px 0;
+      font-size: 1rem;
     }
     .question {
-      margin-top: 45px;
-      font-size: 1.5rem;
+      margin-top: 50px;
+      font-size: 1.6rem;
       color: #e6396d;
       font-weight: 600;
     }
+    .soft {
+      font-size: 1.05rem;
+      margin-top: 12px;
+      color: #666;
+      font-style: italic;
+    }
     .buttons {
-      margin-top: 30px;
+      margin-top: 35px;
     }
     button {
       border: none;
-      padding: 15px 32px;
-      font-size: 1.05rem;
-      border-radius: 40px;
+      padding: 16px 36px;
+      font-size: 1.1rem;
+      border-radius: 45px;
       cursor: pointer;
       margin: 10px;
       transition: all 0.35s ease;
@@ -81,25 +104,25 @@
       color: white;
     }
     .yes:hover {
-      transform: scale(1.08);
+      transform: scale(1.1);
     }
     .always {
       background: #ffe6ec;
       color: #e6396d;
     }
     .always:hover {
-      transform: scale(1.08);
+      transform: scale(1.1);
     }
     footer {
-      margin-top: 40px;
+      margin-top: 45px;
       font-size: 0.95rem;
       color: #777;
     }
     .confetti {
       position: fixed;
       top: -10px;
-      font-size: 22px;
-      animation: fall 3.5s linear forwards;
+      font-size: 24px;
+      animation: fall 4s linear forwards;
       z-index: 1;
     }
     @keyframes fall {
@@ -119,7 +142,7 @@
 
   <div class="card">
     <section class="reveal">
-      <h1>Jay ♥ Gracy</h1>
+      <h1 class="glow">Jay ♥ Gracy</h1>
       <h2>A little corner of us</h2>
     </section>
 
@@ -127,20 +150,45 @@
       <p>Dear Gracy,</p>
       <p>
         From random conversations to endless laughter, from comfort to chaos,
-        you slowly became my favorite part of every day. With you, even ordinary
-        moments feel warm, safe, and special.
+        you slowly became my favorite part of every day.
       </p>
     </section>
 
     <section class="reveal">
       <p>
-        You are my calm, my excitement, my soft place to land. Every memory with
-        you feels like home — and I want a lifetime of them with you.
+        You are my calm, my excitement, my soft place to land. With you, love
+        feels effortless and real.
       </p>
     </section>
 
     <section class="reveal">
+      <div class="timeline">
+        <p>✨ The day we met — something felt different</p>
+        <p>💬 Late-night talks — comfort became connection</p>
+        <p>❤️ Now — choosing you, every single day</p>
+      </div>
+    </section>
+
+    <section class="reveal">
       <div class="heart">♥</div>
+    </section>
+
+    <section class="reveal">
+      <p class="question">So Jay… will you be my Valentine?</p>
+      <p class="soft">No pressure — but I really hope it’s a yes 🥹</p>
+    </section>
+
+    <section class="reveal">
+      <div class="buttons">
+        <button class="yes" onclick="celebrate()">YES 💖</button>
+        <button class="always" onclick="alert('It was always you ♥')">Always You 🌹</button>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <footer>Made with all my heart, just for you.</footer>
+    </section>
+  </div>
     </section>
 
     <section class="reveal">
@@ -167,20 +215,20 @@
           entry.target.classList.add('show');
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));
 
     function celebrate() {
       alert('Best YES ever ♥');
-      for (let i = 0; i < 45; i++) {
+      for (let i = 0; i < 60; i++) {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
-        confetti.innerText = ['💖','🌹','✨','💘','❤️','🥹'][Math.floor(Math.random() * 6)];
+        confetti.innerText = ['💖','🌹','✨','💘','❤️','🥹','🎉'][Math.floor(Math.random() * 7)];
         confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.animationDuration = 2.5 + Math.random() * 2 + 's';
+        confetti.style.animationDuration = 2.5 + Math.random() * 2.5 + 's';
         document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 5000);
+        setTimeout(() => confetti.remove(), 6000);
       }
     }
   </script>
