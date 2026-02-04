@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jay ♥ Gracy</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffe6ec, #fff);
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      max-width: 700px;
+      padding: 40px 30px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #e6396d;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .heart {
+      font-size: 2.5rem;
+      animation: float 2s ease-in-out infinite;
+      margin: 20px 0;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .question {
+      margin-top: 35px;
+      font-size: 1.4rem;
+      color: #e6396d;
+      font-weight: 600;
+    }
+    .buttons {
+      margin-top: 25px;
+    }
+    button {
+      border: none;
+      padding: 14px 28px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+    .yes {
+      background: #e6396d;
+      color: white;
+    }
+    .yes:hover {
+      background: #cf2f60;
+      transform: scale(1.05);
+    }
+    .always {
+      background: #ffe6ec;
+      color: #e6396d;
+    }
+    .always:hover {
+      background: #ffd1dc;
+      transform: scale(1.05);
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .confetti {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall 3s linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Romantic Background Music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>Jay ♥ Gracy</h1>
+    <h2>A little corner of us</h2>
+
+    <p>Dear Gracy,</p>
+    <p>
+      From random conversations to endless laughter, from comfort to chaos,
+      you slowly became my favorite part of every day. With you, even ordinary
+      moments feel warm, safe, and special.
+    </p>
+    <p>
+      You are my calm, my excitement, my soft place to land. Every memory with
+      you is something I want to keep forever.
+    </p>
+
+    <div class="heart">♥</div>
+
+    <p class="question">So Gracy… will you be my Valentine?</p>
+
+    <div class="buttons">
+      <button class="yes" onclick="celebrate()">YES 💖</button>
+      <button class="always" onclick="alert('I knew it was always you ♥')">Always You 🌹</button>
+    </div>
+
+    <footer>
+      Made with love by Jay, just for you.
+    </footer>
+  </div>
+
+  <script>
+    function celebrate() {
+      alert('Best YES ever ♥');
+      for (let i = 0; i < 40; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.innerText = ['💖','🌹','✨','💘','❤️'][Math.floor(Math.random() * 5)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDuration = 2 + Math.random() * 2 + 's';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 4000);
+      }
+    }
+  </script>
+
+</body>
+</html>
